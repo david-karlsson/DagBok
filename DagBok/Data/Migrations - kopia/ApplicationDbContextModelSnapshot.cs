@@ -36,6 +36,9 @@ namespace DagBok.Data.Migrations
                     b.Property<string>("Innehåll")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("IdUserId");

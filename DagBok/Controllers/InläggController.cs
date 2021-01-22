@@ -8,15 +8,18 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DagBok.Data;
 using DagBok.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace DagBok.Controllers
 {
     public class InläggController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<IdentityUser> _userManager;
+        public readonly UserManager<IdentityUser> _userManager;
         public InläggController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
@@ -28,26 +31,91 @@ namespace DagBok.Controllers
             return await _userManager.GetUserAsync(HttpContext.User);
         }
 
+  
+
 
 
         protected Inlägg setUserId { get; set; }
-      /*  void Page_Load(object sender, EventArgs e)
+
+
+
+       /* protected  string UserName()
         {
 
-            this.setUserId.User = GetCurrentUser();
+            var userStr =  _userManager.GetUserAsync(User).ToString();
+            return userStr;
         }
-*/
 
+
+        protected string userStr = UserName();*/
+
+
+
+        [Authorize]
         // GET: Inlägg
         public async Task<IActionResult> Index()
         {
 
             var user = await _userManager.GetUserAsync(User);
-            
+            var EmptyInlägg = new List<Inlägg>();
 
             var inlägg = await _context.Inlägg.ToListAsync();
 
+
+
+
+
+            /*                var singleInl = await _context.Inlägg.FindAsync(int.Parse(p.IdUserId));*/
+
+
+
+            /*  var inl = (from i in _context.Inlägg
+                  where user.Id.Equals(p.IdUserId)
+                  select i).FirstOrDefault();*/
+            /*  if (inl.Equals(p) )
+              {*/
+
+            /* if (inl.IdUserId == null)
+             {
+                 return View(EmptyInlägg);
+             }*/
+
+            /*
+                            if (inl.IdUserId == null)
+                            {
+                                return View(EmptyInlägg);
+                
             
+            
+            }*/
+            /* }*/
+
+
+
+
+
+
+            /*  foreach (var p in inlägg)
+              {
+                  var userName = (from u in _context.Users
+                      where u.Id.Equals(p.IdUserId)
+                      select u);
+
+                  if (user.Id == p.IdUserId)
+
+                  {
+                      var UserInl = inlägg;
+
+                      return View(UserInl);
+                  }   }
+  */
+
+
+
+
+
+
+            return View(inlägg);
             /* var inläggsLista = new List<Inlägg>();
              foreach (var p in inlägg)
              {
@@ -62,11 +130,14 @@ namespace DagBok.Controllers
                  };
 
                  inläggsLista.Add(post);
-             }*/
+             */
 
-            return View(inlägg);
+
         }
 
+
+
+        [Authorize]
         // GET: Inlägg/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -91,6 +162,7 @@ namespace DagBok.Controllers
             return View();
         }
 
+        [Authorize]
         // POST: Inlägg/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
