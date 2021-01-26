@@ -11,7 +11,7 @@
 </p>
 <table class="table">
     <thead>
-        <tr>
+        <tr id="TableHeadRow">
             <th>
                 @Html.DisplayNameFor(model => model.Datum)
             </th>
@@ -34,7 +34,7 @@
                 @Html.DisplayFor(modelItem => item.Innehåll)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.User.Email)
+                @Html.DisplayFor(modelItem => item.User.Email )
             </td>
 
 

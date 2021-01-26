@@ -13,9 +13,11 @@ $(document).ready(function () {
 */
 /*
     console.log(name);*/
-    $("tr").hide()
+    $("tr").hide();
 
-    $("tr:contains('"+name+"')").show();
+    $("tr:contains('" + name + "')").show();
+    $("#TableHeadRow").show();
+
 
     /*  if ($("tr").text() == (name) ) {
 
