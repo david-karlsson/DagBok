@@ -209,6 +209,11 @@ namespace DagBok.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Datum,Innehåll,IdUserId")] Inlägg inlägg)
         {
+
+
+            var user = await GetCurrentUser();
+            inlägg.User = user;
+
             if (id != inlägg.Id)
             {
                 return NotFound();

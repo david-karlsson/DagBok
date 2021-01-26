@@ -6,13 +6,13 @@
 
 $(document).ready(function () {
 
-    var name = $(".LoginName").text().toString();
+    var name = $(".LoginName").text();
 
 
 /*    $name.hide();
 */
-
-    console.log(name);
+/*
+    console.log(name);*/
     $("tr").hide()
 
     $("tr:contains('"+name+"')").show();
