@@ -35,9 +35,9 @@ namespace DagBok.Controllers
 
 
 
-        protected Inlägg setUserId { get; set; }
+    /*    protected Inlägg setUserId { get; set; }
 
-
+*/
 
        /* protected  string UserName()
         {
@@ -51,18 +51,50 @@ namespace DagBok.Controllers
 
 
 
+
+
+
+
         [Authorize]
         // GET: Inlägg
         public async Task<IActionResult> Index()
         {
+            /*
+                        var user = await _userManager.GetUserAsync(User);
+                        var EmptyInlägg = new List<Inlägg>();*/
 
-            var user = await _userManager.GetUserAsync(User);
-            var EmptyInlägg = new List<Inlägg>();
+            var inlägg = await _context.Inlägg
+                .Select(s => new InläggIndexModel
+                {
+                    Id = s.Id,
+                    Datum = s.Datum,
+                    Innehåll = s.Innehåll,
+                    IdUserId = s.IdUserId,
+                    User = s.User
+                }).ToListAsync();
 
-            var inlägg = await _context.Inlägg.ToListAsync();
 
 
 
+/*            var inlägg = await _context.Inlägg.ToListAsync();
+*/
+
+
+
+
+          /*  List<InläggIndexModel>  model = new List <InläggIndexModel>
+            {
+                Id = inlägg.Id,
+                Innehåll = inlägg.Innehåll,
+                Datum = inlägg.Datum,
+                IdUserId = inlägg.IdUserId,
+                User = inlägg.User
+
+            };
+*/
+
+           
+            ;
 
 
             /*                var singleInl = await _context.Inlägg.FindAsync(int.Parse(p.IdUserId));*/
@@ -157,8 +189,20 @@ namespace DagBok.Controllers
         }
 
         // GET: Inlägg/Create
-        public IActionResult Create()
+        public IActionResult Create(InläggCreateModel ic)
         {
+
+        /*    ic = new InläggCreateModel
+            {
+                Id = inlägg.Id,
+                Innehåll = inlägg.Innehåll,
+                Datum = inlägg.Datum,
+                IdUserId = inlägg.IdUserId,
+                User = inlägg.User
+
+            };
+*/
+
             return View();
         }
 
@@ -179,9 +223,26 @@ namespace DagBok.Controllers
 
             if (ModelState.IsValid)
             {
+
+                /* inlägg = (Inlägg) _context.Inlägg.Select(s => new InläggCreateModel
+                {
+                    Id = s.Id,
+                    Datum = s.Datum,
+                    Innehåll = s.Innehåll,
+                    IdUserId = s.IdUserId,
+                    User = s.User
+                });
+
+                _context.Inlägg.Add(inlägg);
+*/
+
+
                 _context.Inlägg.Add(inlägg);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+
+
+
             }
             return View(inlägg);
         }

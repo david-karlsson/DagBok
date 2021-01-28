@@ -1,49 +1,62 @@
-﻿@model IEnumerable<DagBok.Models.Inlägg>
+﻿@model IEnumerable<DagBok.Models.InläggIndexModel>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+@*
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>*@
+@*
+    @section InläggViewComponent{
+        @await Component.InvokeAsync("InläggViewComponent")
+    }
+*@
+@*@Html.RenderPartial("Create", Model.InläggCreateModel);*@
+
+
+@*@section Create{
+    @await Component.InvokeAsync(nameof(DagBok.Inlägg))
+}
+*@
+
+<table id="EntrytList" class="table">
     <thead>
-        <tr id="TableHeadRow">
-            <th>
-                @Html.DisplayNameFor(model => model.Datum)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Innehåll)
-            </th>
-            <th></th>
-        </tr>
+        @*  <tr id="TableHeadRow">
+                <th>
+                    @Html.DisplayNameFor(model => model.Datum)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Innehåll)
+                </th>
+                <th></th>
+            </tr>*@
     </thead>
     <tbody>
-    
-   @* @if (User.FindFirst(u))*@
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Datum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Innehåll)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Email )
-            </td>
+
+        @* @if (User.FindFirst(u))*@
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Datum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Innehåll)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.Email)
+                </td>
 
 
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-    }
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

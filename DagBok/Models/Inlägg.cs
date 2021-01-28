@@ -35,7 +35,7 @@ namespace DagBok.Models
         public string IdUserId { get; set; }
         public IdentityUser User { get; set;}
 
-        public InläggStatus Status { get; set; }
+       /* public InläggStatus Status { get; set; }
 
 
         public enum InläggStatus
@@ -46,7 +46,7 @@ namespace DagBok.Models
         }
 
 
-
+*/
 
 
     }
