@@ -192,16 +192,7 @@ namespace DagBok.Controllers
         public IActionResult Create(InläggCreateModel ic)
         {
 
-        /*    ic = new InläggCreateModel
-            {
-                Id = inlägg.Id,
-                Innehåll = inlägg.Innehåll,
-                Datum = inlägg.Datum,
-                IdUserId = inlägg.IdUserId,
-                User = inlägg.User
-
-            };
-*/
+       
 
             return View();
         }
@@ -212,7 +203,7 @@ namespace DagBok.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Datum,Innehåll,IdUserId")] Inlägg inlägg)
+        public async Task<IActionResult> Create([Bind("Id,Datum,Innehåll,IdUserId")] Inlägg inlägg, InläggCreateModel inläggCreateModel)
         {
             /*            ModelState.Clear();
             *//*            var user = await _userManager.GetUserAsync(HttpContext.User);
@@ -220,21 +211,25 @@ namespace DagBok.Controllers
             var user = await GetCurrentUser();
             inlägg.User = user;
 
+            inlägg.Datum = inläggCreateModel.Datum;
+            inlägg.Innehåll = inläggCreateModel.Innehåll;
+          
+           
 
             if (ModelState.IsValid)
             {
 
-                /* inlägg = (Inlägg) _context.Inlägg.Select(s => new InläggCreateModel
+              /*  inlägg = inläggCreateModel;
                 {
                     Id = s.Id,
                     Datum = s.Datum,
                     Innehåll = s.Innehåll,
                     IdUserId = s.IdUserId,
                     User = s.User
-                });
+                });*/
 
                 _context.Inlägg.Add(inlägg);
-*/
+
 
 
                 _context.Inlägg.Add(inlägg);
@@ -244,7 +239,7 @@ namespace DagBok.Controllers
 
 
             }
-            return View(inlägg);
+            return View(inläggCreateModel);
         }
 
         // GET: Inlägg/Edit/5
