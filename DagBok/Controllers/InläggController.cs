@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DagBok.Data;
 using DagBok.Models;
+using DagBok.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -57,13 +58,19 @@ namespace DagBok.Controllers
 
         [Authorize]
         // GET: Inlägg
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index( )
         {
-            /*
-                        var user = await _userManager.GetUserAsync(User);
-                        var EmptyInlägg = new List<Inlägg>();*/
+
+/*            var user = await _userManager.GetUserAsync(User);
+*//*            var EmptyInlägg = new List<Inlägg>();
+*/
+
+
+          
 
             var inlägg = await _context.Inlägg
+           
+
                 .Select(s => new InläggIndexModel
                 {
                     Id = s.Id,
@@ -76,25 +83,26 @@ namespace DagBok.Controllers
 
 
 
-/*            var inlägg = await _context.Inlägg.ToListAsync();
-*/
+
+            /*            var inlägg = await _context.Inlägg.ToListAsync();
+            */
 
 
 
 
-          /*  List<InläggIndexModel>  model = new List <InläggIndexModel>
+          /*  InläggIndexModel model = new InläggIndexModel
             {
-                Id = inlägg.Id,
-                Innehåll = inlägg.Innehåll,
-                Datum = inlägg.Datum,
-                IdUserId = inlägg.IdUserId,
-                User = inlägg.User
+                Id = inlägg.FirstOrDefault().Id,
+                Innehåll = inlägg.FirstOrDefault().Innehåll,
+                Datum = inlägg.FirstOrDefault().Datum,
+                IdUserId = inlägg.FirstOrDefault().IdUserId,
+                User = inlägg.FirstOrDefault().User
 
             };
-*/
 
-           
-            ;
+
+            var inl = new InläggIndexCreateModel(model);
+           */
 
 
             /*                var singleInl = await _context.Inlägg.FindAsync(int.Parse(p.IdUserId));*/
@@ -147,7 +155,7 @@ namespace DagBok.Controllers
 
 
 
-            return View(inlägg);
+            return PartialView(inlägg);
             /* var inläggsLista = new List<Inlägg>();
              foreach (var p in inlägg)
              {
@@ -189,11 +197,8 @@ namespace DagBok.Controllers
         }
 
         // GET: Inlägg/Create
-        public IActionResult Create(InläggCreateModel ic)
+        public IActionResult Create()
         {
-
-       
-
             return View();
         }
 
@@ -219,17 +224,6 @@ namespace DagBok.Controllers
             if (ModelState.IsValid)
             {
 
-              /*  inlägg = inläggCreateModel;
-                {
-                    Id = s.Id,
-                    Datum = s.Datum,
-                    Innehåll = s.Innehåll,
-                    IdUserId = s.IdUserId,
-                    User = s.User
-                });*/
-
-                _context.Inlägg.Add(inlägg);
-
 
 
                 _context.Inlägg.Add(inlägg);
@@ -239,7 +233,7 @@ namespace DagBok.Controllers
 
 
             }
-            return View(inläggCreateModel);
+            return PartialView(inläggCreateModel);
         }
 
         // GET: Inlägg/Edit/5
@@ -331,5 +325,42 @@ namespace DagBok.Controllers
         {
             return _context.Inlägg.Any(e => e.Id == id);
         }
+     
+        public async Task<IActionResult> Home()
+        {
+
+            /*
+                        Task List<Index>()
+                        {
+
+                            return ViewBag.Index = this.Index().Result;
+
+       *//*                 }*//*
+            ViewData["Index"] = Index().Result;
+
+
+
+
+
+            var inlägg = await _context.Inlägg
+
+.ToListAsync();*/
+
+
+
+/*            var inl = new InläggIndexCreateModel(inlägg);
+*//*            inl.InläggsList = inlägg;
+*/
+
+
+          /*  ViewBag.Create = Create();*/
+            /*            var tupleModel = new Tuple<List<Inlägg>>((List<Inlägg>)Index().Result);
+            */
+            return View();
+        }
+
     }
+
+
+
 }

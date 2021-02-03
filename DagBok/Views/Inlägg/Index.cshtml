@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DagBok.Models.InläggIndexModel>
+﻿@model IList<DagBok.ViewModels.InläggIndexModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -36,12 +36,17 @@
     </thead>
     <tbody>
 
-        @* @if (User.FindFirst(u))*@
-        @foreach (var item in Model)
+    @* @if (User.FindFirst(u))*@
+    
+    
+    
+
+    @foreach (var item in Model)
         {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Datum)
+
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Innehåll)

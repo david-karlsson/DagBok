@@ -74,7 +74,7 @@ namespace DagBok
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Inlägg}/{action=Index}/{id?}");
+                    pattern: "{controller=Inlägg}/{action=Home}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

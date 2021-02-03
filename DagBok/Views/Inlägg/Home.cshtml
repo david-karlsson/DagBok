@@ -1,0 +1,49 @@
+﻿@model DagBok.ViewModels.InläggIndexCreateModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<partial name="Create" model="@Model" />
+@await Component.InvokeAsync("Inlägg")
+
+@*@ViewData.Model
+*@
+@*
+    @foreach (Inlägg inläggIndexModel in ViewData.)
+*@
+@*{*@
+
+@*    <partial name="Index" model="@Model.InläggIndexModelList"/>*@
+@*
+    }
+
+*@
+
+
+
+
+
+@*
+
+    @foreach (Inlägg inlägg in ViewBag.Index)
+    {
+        <tr>
+            <td>@inlägg.Datum</td>
+            <td>@inlägg.Innehåll</td>
+
+
+        </tr>
+    }
+
+*@
+}
+@*<partial name="Index" model=" @Model" />
+    {Html.RenderPartial("Create", Model.);}
+
+    @ViewBag.Index;
+    <partial name="Create" />
+        <partial name="Index" model="@Model" />
+
+
+*@
