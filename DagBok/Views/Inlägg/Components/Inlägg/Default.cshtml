@@ -6,52 +6,49 @@
 
 
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 
 
-
-<table id="EntrytList" class="table">
-    <thead>
-    @*  <tr id="TableHeadRow">
-                <th>
-                    @Html.DisplayNameFor(model => model.Datum)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Innehåll)
-                </th>
-                <th></th>
-            </tr>*@
-    </thead>
+<table id="EntryList" >
+                <thead>
+                @*  <tr id="TableHeadRow">
+                            <th>
+                                @Html.DisplayNameFor(model => model.Datum)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Innehåll)
+                            </th>
+                            <th></th>
+                        </tr>*@
+                </thead>
     <tbody>
 
-    @* @if (User.FindFirst(u))*@
     
     
     
+    
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Datum)
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="datum-text">
+                        <p> @Html.DisplayFor(modelItem => item.Datum)</p>
+                        <p class="login-email"> @Html.DisplayFor(modelItem => item.User.Email)</p>
+                    </td>
+                
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Innehåll)
+                    </td>
+                   
+                
+                    </tr>
+            }
 
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Innehåll)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Email)
-            </td>
-
-
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-    }
+                 @*   <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>*@
+                
+           
     </tbody>
 </table>

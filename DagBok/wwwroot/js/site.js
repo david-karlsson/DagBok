@@ -7,16 +7,16 @@
 $(document).ready(function () {
 
     var name = $(".LoginName").text();
-
+    /*var date = $(".datum-text");*/
 
 /*    $name.hide();
 */
 /*
     console.log(name);*/
     $("tr").hide();
-
     $("tr:contains('" + name + "')").show();
-    $("#TableHeadRow").show();
+/*    $(date).show();
+*/    $("#TableHeadRow").show();
 
 
     /*  if ($("tr").text() == (name) ) {

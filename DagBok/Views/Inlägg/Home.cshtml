@@ -4,9 +4,15 @@
     ViewData["Title"] = "Home";
 }
 
-<partial name="Create" model="@Model" />
-@await Component.InvokeAsync("Inlägg")
 
+    <partial name="Create" model="@Model" />
+
+
+<div class="col p-5 ">
+
+    @await Component.InvokeAsync("Inlägg")
+
+</div>
 @*@ViewData.Model
 *@
 @*
@@ -37,7 +43,7 @@
     }
 
 *@
-}
+
 @*<partial name="Index" model=" @Model" />
     {Html.RenderPartial("Create", Model.);}
 

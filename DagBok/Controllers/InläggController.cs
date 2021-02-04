@@ -228,7 +228,7 @@ namespace DagBok.Controllers
 
                 _context.Inlägg.Add(inlägg);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Home));
 
 
 
@@ -329,33 +329,6 @@ namespace DagBok.Controllers
         public async Task<IActionResult> Home()
         {
 
-            /*
-                        Task List<Index>()
-                        {
-
-                            return ViewBag.Index = this.Index().Result;
-
-       *//*                 }*//*
-            ViewData["Index"] = Index().Result;
-
-
-
-
-
-            var inlägg = await _context.Inlägg
-
-.ToListAsync();*/
-
-
-
-/*            var inl = new InläggIndexCreateModel(inlägg);
-*//*            inl.InläggsList = inlägg;
-*/
-
-
-          /*  ViewBag.Create = Create();*/
-            /*            var tupleModel = new Tuple<List<Inlägg>>((List<Inlägg>)Index().Result);
-            */
             return View();
         }
 
