@@ -103,8 +103,18 @@ table#EntryList tr {
     background: ghostwhite;
     padding: 0.5rem;
     margin: 0.5rem;
+    
 }
 
-    td {
-        
-    }
+
+td {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.td-inline {
+    display: inline-block
+}

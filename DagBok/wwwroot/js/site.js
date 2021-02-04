@@ -19,6 +19,91 @@ $(document).ready(function () {
 */    $("#TableHeadRow").show();
 
 
+
+
+
+
+
+
+
+    $("tr").click(function () {
+
+        $("td", this).css("display", "inline-block");
+
+      /*  var display = $("td", this).css("display");
+         
+        if (display === "inline-block"){
+
+            $("td", this).css("display", "-webkit-box");
+
+
+        }
+
+
+        if (display === "-webkit-box") {
+
+            $("td", this).css("display", "inline-block");
+
+
+        }*/
+
+
+
+
+
+
+
+/*
+        if ($("td", this).attr === "display", "-webkit-box") {
+
+            $("td", this).css("display", "inline-block");
+
+
+        }*/
+      /*  $(".td", this).addClass("td-inline");
+
+        if ($("td", this).hasClass("td-inline")) {
+            $("td", this).removeClass("td-inline");
+
+        }
+
+        else  {
+            $(".td", this).addClass("td-inline");
+
+        }
+*/
+
+
+
+        if ($("td",this).hasClass("invisible")) {
+
+
+            $(".invisible", this).addClass("visible");
+            $(".invisible", this).removeClass("invisible");
+
+
+        }
+        else if ($("td", this).hasClass("visible")) {
+
+            $(".visible", this).addClass("invisible");
+            $(".visible",this).removeClass("visible");
+        }
+/*
+      
+
+    
+
+
+        $("td").hasClass("visible")
+        {
+        };*/
+
+
+
+
+    });
+
+
     /*  if ($("tr").text() == (name) ) {
 
 
