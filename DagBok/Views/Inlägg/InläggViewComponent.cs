@@ -36,7 +36,7 @@ namespace DagBok.Views.Inlägg
                     Innehåll = s.Innehåll,
                     IdUserId = s.IdUserId,
                     User = s.User
-                }).ToListAsync();
+                }).OrderBy(s => s.Datum).ToListAsync();
             return View(mc);
         }
 

@@ -16,12 +16,13 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Datum" class="control-label"></label>
-                <input asp-for="Datum" class="form-control" />
+                <input asp-for="Datum" class="form-control"  type="date"/>
                 <span asp-validation-for="Datum" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Innehåll" class="control-label"></label>
-                <input asp-for="Innehåll" class="form-control" />
+                <input asp-for="Innehåll" id="text-box" class="form-control" style="padding-bottom: 5rem;
+                                      padding-top: 1rem;"/>
                 <span asp-validation-for="Innehåll" class="text-danger"></span>
             </div>
 

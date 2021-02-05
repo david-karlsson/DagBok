@@ -30,6 +30,8 @@ $(document).ready(function () {
 
         $("td", this).css("display", "inline-block");
 
+/*     $("td", this).toggleClass("webkit-box-display");*/
+
       /*  var display = $("td", this).css("display");
          
         if (display === "inline-block"){
@@ -52,26 +54,32 @@ $(document).ready(function () {
 
 
 
-
 /*
+
         if ($("td", this).attr === "display", "-webkit-box") {
 
             $("td", this).css("display", "inline-block");
-
-
-        }*/
-      /*  $(".td", this).addClass("td-inline");
-
-        if ($("td", this).hasClass("td-inline")) {
-            $("td", this).removeClass("td-inline");
-
-        }
-
-        else  {
-            $(".td", this).addClass("td-inline");
-
-        }
 */
+
+
+    /*  }*/
+
+
+/*
+        $(".td", this).addClass("td-inline");*/
+        
+      /*  if ($("tr", this.children).hasClass("webkit-box-display"))
+            {
+          
+
+            }
+
+        else
+            {
+                $("td", this).addClass("webkit-box-display");
+
+            }*/
+
 
 
 

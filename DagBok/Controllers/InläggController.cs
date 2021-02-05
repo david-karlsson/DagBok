@@ -287,7 +287,7 @@ namespace DagBok.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Home));
             }
             return View(inlägg);
         }
@@ -318,7 +318,7 @@ namespace DagBok.Controllers
             var inlägg = await _context.Inlägg.FindAsync(id);
             _context.Inlägg.Remove(inlägg);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Home));
         }
 
         private bool InläggExists(int id)
